@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Bus_ProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="booking_id" />
+    </Key>
+    <Property Name="booking_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="Guest_Id" Type="Int32" />
+    <Property Name="Travel_Id" Type="Int32" />
+    <Property Name="coach_bus_id" Type="Int32" />
+    <Property Name="booking_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="bus_id" Type="Int32" />
+    <NavigationProperty Name="Bus_Details" Relationship="Self.FK__Booking__bus_id__35BCFE0A" FromRole="Booking" ToRole="Bus_Details" />
+    <NavigationProperty Name="Coach_bus" Relationship="Self.FK__Booking__coach_b__36B12243" FromRole="Booking" ToRole="Coach_bus" />
+    <NavigationProperty Name="Guest" Relationship="Self.FK__Booking__Guest_I__37A5467C" FromRole="Booking" ToRole="Guest" />
+    <NavigationProperty Name="Travel" Relationship="Self.FK__Booking__Travel___38996AB5" FromRole="Booking" ToRole="Travel" />
+    <NavigationProperty Name="Registered_User" Relationship="Self.FK__Booking__user_id__398D8EEE" FromRole="Booking" ToRole="Registered_User" />
+    <NavigationProperty Name="payments" Relationship="Self.FK__payment__booking__3A81B327" FromRole="Booking" ToRole="payment" />
+    <NavigationProperty Name="Seats" Relationship="Self.FK__Seats__booking_i__3D5E1FD2" FromRole="Booking" ToRole="Seats" />
+  </EntityType>
+  <EntityType Name="Bus_Details">
+    <Key>
+      <PropertyRef Name="Bus_ID" />
+    </Key>
+    <Property Name="Bus_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Bus_Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Cost_Per_Seat" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="NO_of_Seats" Type="Int32" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking__bus_id__35BCFE0A" FromRole="Bus_Details" ToRole="Booking" />
+    <NavigationProperty Name="Seats" Relationship="Self.FK__Seats__Bus_ID__3E52440B" FromRole="Bus_Details" ToRole="Seats" />
+    <NavigationProperty Name="Travels" Relationship="Self.FK__Travel__Bus_ID__3F466844" FromRole="Bus_Details" ToRole="Travel" />
+  </EntityType>
+  <EntityType Name="Coach_bus">
+    <Key>
+      <PropertyRef Name="coach_bus_id" />
+    </Key>
+    <Property Name="coach_bus_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Bus_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="No_of_seats" Type="Int32" />
+    <Property Name="cost_per_day" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="driver_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="driver_license_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking__coach_b__36B12243" FromRole="Coach_bus" ToRole="Booking" />
+    <NavigationProperty Name="Travels" Relationship="Self.FK__Travel__coach_bu__403A8C7D" FromRole="Coach_bus" ToRole="Travel" />
+  </EntityType>
+  <EntityType Name="Guest">
+    <Key>
+      <PropertyRef Name="Guest_ID" />
+    </Key>
+    <Property Name="Guest_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="email_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="phone_no" Type="Decimal" Precision="10" Scale="0" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking__Guest_I__37A5467C" FromRole="Guest" ToRole="Booking" />
+    <NavigationProperty Name="payments" Relationship="Self.FK__payment__guest_i__3B75D760" FromRole="Guest" ToRole="payment" />
+  </EntityType>
+  <EntityType Name="payment">
+    <Key>
+      <PropertyRef Name="transaction_id" />
+    </Key>
+    <Property Name="transaction_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="guest_id" Type="Int32" />
+    <Property Name="booking_id" Type="Int32" />
+    <Property Name="total_price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="payment_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Booking" Relationship="Self.FK__payment__booking__3A81B327" FromRole="payment" ToRole="Booking" />
+    <NavigationProperty Name="Guest" Relationship="Self.FK__payment__guest_i__3B75D760" FromRole="payment" ToRole="Guest" />
+    <NavigationProperty Name="Registered_User" Relationship="Self.FK__payment__user_id__3C69FB99" FromRole="payment" ToRole="Registered_User" />
+  </EntityType>
+  <EntityType Name="Registered_User">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone_no" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="wallet" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="email_id" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking__user_id__398D8EEE" FromRole="Registered_User" ToRole="Booking" />
+    <NavigationProperty Name="payments" Relationship="Self.FK__payment__user_id__3C69FB99" FromRole="Registered_User" ToRole="payment" />
+  </EntityType>
+  <EntityType Name="Seat">
+    <Key>
+      <PropertyRef Name="Seat_no" />
+      <PropertyRef Name="Bus_ID" />
+    </Key>
+    <Property Name="Seat_no" Type="Int32" Nullable="false" />
+    <Property Name="Bus_ID" Type="Int32" Nullable="false" />
+    <Property Name="seat_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="passenger_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="booking_id" Type="Int32" />
+    <NavigationProperty Name="Booking" Relationship="Self.FK__Seats__booking_i__3D5E1FD2" FromRole="Seats" ToRole="Booking" />
+    <NavigationProperty Name="Bus_Details" Relationship="Self.FK__Seats__Bus_ID__3E52440B" FromRole="Seats" ToRole="Bus_Details" />
+  </EntityType>
+  <EntityType Name="Travel">
+    <Key>
+      <PropertyRef Name="Travel_ID" />
+    </Key>
+    <Property Name="Travel_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pickup_place" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="drop_place" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Departure_Time" Type="DateTime" Precision="3" />
+    <Property Name="Arrival_Time" Type="DateTime" Precision="3" />
+    <Property Name="Bus_ID" Type="Int32" />
+    <Property Name="no_of_days" Type="Int32" />
+    <Property Name="coach_bus_id" Type="Int32" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking__Travel___38996AB5" FromRole="Travel" ToRole="Booking" />
+    <NavigationProperty Name="Bus_Details" Relationship="Self.FK__Travel__Bus_ID__3F466844" FromRole="Travel" ToRole="Bus_Details" />
+    <NavigationProperty Name="Coach_bus" Relationship="Self.FK__Travel__coach_bu__403A8C7D" FromRole="Travel" ToRole="Coach_bus" />
+  </EntityType>
+  <Association Name="FK__Booking__bus_id__35BCFE0A">
+    <End Role="Bus_Details" Type="Self.Bus_Details" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bus_Details">
+        <PropertyRef Name="Bus_ID" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="bus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking__coach_b__36B12243">
+    <End Role="Coach_bus" Type="Self.Coach_bus" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coach_bus">
+        <PropertyRef Name="coach_bus_id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="coach_bus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking__Guest_I__37A5467C">
+    <End Role="Guest" Type="Self.Guest" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Guest">
+        <PropertyRef Name="Guest_ID" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Guest_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking__Travel___38996AB5">
+    <End Role="Travel" Type="Self.Travel" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Travel">
+        <PropertyRef Name="Travel_ID" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Travel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Booking__user_id__398D8EEE">
+    <End Role="Registered_User" Type="Self.Registered_User" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registered_User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__payment__booking__3A81B327">
+    <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+    <End Role="payment" Type="Self.payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="booking_id" />
+      </Principal>
+      <Dependent Role="payment">
+        <PropertyRef Name="booking_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Seats__booking_i__3D5E1FD2">
+    <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+    <End Role="Seats" Type="Self.Seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="booking_id" />
+      </Principal>
+      <Dependent Role="Seats">
+        <PropertyRef Name="booking_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Seats__Bus_ID__3E52440B">
+    <End Role="Bus_Details" Type="Self.Bus_Details" Multiplicity="1" />
+    <End Role="Seats" Type="Self.Seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bus_Details">
+        <PropertyRef Name="Bus_ID" />
+      </Principal>
+      <Dependent Role="Seats">
+        <PropertyRef Name="Bus_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Travel__Bus_ID__3F466844">
+    <End Role="Bus_Details" Type="Self.Bus_Details" Multiplicity="0..1" />
+    <End Role="Travel" Type="Self.Travel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bus_Details">
+        <PropertyRef Name="Bus_ID" />
+      </Principal>
+      <Dependent Role="Travel">
+        <PropertyRef Name="Bus_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Travel__coach_bu__403A8C7D">
+    <End Role="Coach_bus" Type="Self.Coach_bus" Multiplicity="0..1" />
+    <End Role="Travel" Type="Self.Travel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coach_bus">
+        <PropertyRef Name="coach_bus_id" />
+      </Principal>
+      <Dependent Role="Travel">
+        <PropertyRef Name="coach_bus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__payment__guest_i__3B75D760">
+    <End Role="Guest" Type="Self.Guest" Multiplicity="0..1" />
+    <End Role="payment" Type="Self.payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Guest">
+        <PropertyRef Name="Guest_ID" />
+      </Principal>
+      <Dependent Role="payment">
+        <PropertyRef Name="guest_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__payment__user_id__3C69FB99">
+    <End Role="Registered_User" Type="Self.Registered_User" Multiplicity="0..1" />
+    <End Role="payment" Type="Self.payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registered_User">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="payment">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Bus_ProjectEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="admins" EntityType="Self.admin" />
+    <EntitySet Name="Bookings" EntityType="Self.Booking" />
+    <EntitySet Name="Bus_Details" EntityType="Self.Bus_Details" />
+    <EntitySet Name="Coach_bus" EntityType="Self.Coach_bus" />
+    <EntitySet Name="Guests" EntityType="Self.Guest" />
+    <EntitySet Name="payments" EntityType="Self.payment" />
+    <EntitySet Name="Registered_User" EntityType="Self.Registered_User" />
+    <EntitySet Name="Seats" EntityType="Self.Seat" />
+    <EntitySet Name="Travels" EntityType="Self.Travel" />
+    <AssociationSet Name="FK__Booking__bus_id__35BCFE0A" Association="Self.FK__Booking__bus_id__35BCFE0A">
+      <End Role="Bus_Details" EntitySet="Bus_Details" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking__coach_b__36B12243" Association="Self.FK__Booking__coach_b__36B12243">
+      <End Role="Coach_bus" EntitySet="Coach_bus" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking__Guest_I__37A5467C" Association="Self.FK__Booking__Guest_I__37A5467C">
+      <End Role="Guest" EntitySet="Guests" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking__Travel___38996AB5" Association="Self.FK__Booking__Travel___38996AB5">
+      <End Role="Travel" EntitySet="Travels" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Booking__user_id__398D8EEE" Association="Self.FK__Booking__user_id__398D8EEE">
+      <End Role="Registered_User" EntitySet="Registered_User" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__payment__booking__3A81B327" Association="Self.FK__payment__booking__3A81B327">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="payment" EntitySet="payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Seats__booking_i__3D5E1FD2" Association="Self.FK__Seats__booking_i__3D5E1FD2">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="Seats" EntitySet="Seats" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Seats__Bus_ID__3E52440B" Association="Self.FK__Seats__Bus_ID__3E52440B">
+      <End Role="Bus_Details" EntitySet="Bus_Details" />
+      <End Role="Seats" EntitySet="Seats" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Travel__Bus_ID__3F466844" Association="Self.FK__Travel__Bus_ID__3F466844">
+      <End Role="Bus_Details" EntitySet="Bus_Details" />
+      <End Role="Travel" EntitySet="Travels" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Travel__coach_bu__403A8C7D" Association="Self.FK__Travel__coach_bu__403A8C7D">
+      <End Role="Coach_bus" EntitySet="Coach_bus" />
+      <End Role="Travel" EntitySet="Travels" />
+    </AssociationSet>
+    <AssociationSet Name="FK__payment__guest_i__3B75D760" Association="Self.FK__payment__guest_i__3B75D760">
+      <End Role="Guest" EntitySet="Guests" />
+      <End Role="payment" EntitySet="payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__payment__user_id__3C69FB99" Association="Self.FK__payment__user_id__3C69FB99">
+      <End Role="Registered_User" EntitySet="Registered_User" />
+      <End Role="payment" EntitySet="payments" />
+    </AssociationSet>
+    <FunctionImport Name="getallbusdetails" ReturnType="Collection(Bus_ProjectModel.getallbusdetails_Result)">
+      <Parameter Name="source" Mode="In" Type="String" />
+      <Parameter Name="dest" Mode="In" Type="String" />
+      <Parameter Name="departure" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="getpwd" ReturnType="Collection(String)">
+      <Parameter Name="user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getseats" ReturnType="Collection(Bus_ProjectModel.getseats_Result)">
+      <Parameter Name="travelid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="update_profile">
+      <Parameter Name="user_id" Mode="In" Type="Int32" />
+      <Parameter Name="fname" Mode="In" Type="String" />
+      <Parameter Name="lname" Mode="In" Type="String" />
+      <Parameter Name="phno" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="updatepwd">
+      <Parameter Name="user_id" Mode="In" Type="Int32" />
+      <Parameter Name="newpwd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getpastbookings" ReturnType="Collection(Bus_ProjectModel.getpastbookings_Result)">
+      <Parameter Name="user_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getavailbuses" ReturnType="Collection(Bus_ProjectModel.getavailbuses_Result)">
+      <Parameter Name="source" Mode="In" Type="String" />
+      <Parameter Name="dest" Mode="In" Type="String" />
+      <Parameter Name="departure" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_LoginCheck" ReturnType="Collection(Int32)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_BookedSeats" ReturnType="Collection(Int32)">
+      <Parameter Name="bus_id" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_LoginCheck1" ReturnType="Collection(Int32)">
+      <Parameter Name="un" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_pendingBook" ReturnType="Collection(Int32)" />
+  </EntityContainer>
+  <ComplexType Name="getallbusdetails_Result">
+    <Property Type="Int32" Name="Bus_ID" Nullable="false" />
+    <Property Type="Int32" Name="Travel_ID" Nullable="false" />
+    <Property Type="String" Name="Bus_Type" Nullable="true" MaxLength="15" />
+    <Property Type="Decimal" Name="Cost_Per_Seat" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="NO_of_Seats" Nullable="true" />
+    <Property Type="String" Name="pickup_place" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="drop_place" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="dept_time" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="arrival_time" Nullable="true" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="getseats_Result">
+    <Property Type="Int32" Name="Seat_no" Nullable="false" />
+    <Property Type="Int32" Name="booking_id" Nullable="false" />
+    <Property Type="String" Name="booking_status" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Travel_ID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="getpastbookings_Result">
+    <Property Type="Int32" Name="booking_id" Nullable="false" />
+    <Property Type="String" Name="pickup_place" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="drop_place" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="getavailbuses_Result">
+    <Property Type="Int32" Name="Bus_ID" Nullable="false" />
+    <Property Type="Int32" Name="Travel_ID" Nullable="false" />
+    <Property Type="String" Name="Bus_Type" Nullable="true" MaxLength="15" />
+    <Property Type="Decimal" Name="Cost_Per_Seat" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="NO_of_Seats" Nullable="true" />
+    <Property Type="String" Name="pickup_place" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="drop_place" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="dept_time" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="arrival_time" Nullable="true" MaxLength="8" />
+  </ComplexType>
+</Schema>

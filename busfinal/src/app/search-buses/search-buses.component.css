@@ -1,0 +1,19 @@
+#wrapper {
+    width:700px;
+    clear:both;
+  }
+  #first {
+    background-color:red;
+    width:200px;
+    float:left;
+  }
+  #second {
+    background-color:blue;
+    width:300px;
+    float:left;
+  }
+  #third {
+    background-color:#bada55;
+    width:200px;
+    float:left;
+  }

@@ -1,0 +1,161 @@
+<!--<div class="plane">
+    <div>
+      <h1>Please select a seat</h1>
+    </div>
+    <div *ngFor="let no of num; let i = index">
+                    <input type="checkbox"  [value]=i+1 #id (change)="selected(id)" />
+                    <label>{{i+1}}</label>
+    </div>
+    </div>-->
+<!--<div *ngFor="let item of s">
+    {{item}}
+</div>-->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <!-- <div>
+        <button (click)="showbookedseats()" id="show">Show Booked Seats</button>
+    </div>-->
+  <div class="container-fluid pt-5 mb-5">
+    <div class="row justify-content-center">
+      <div class="col-md-9 ">
+      <div class="seat_plan_wrap">
+        <div class="row">
+          <div class="col-md-6">
+            <h6>Select Seats </h6>
+            <div class="seats">
+              <div class="handle">
+                <img src="../assets/img/handle.png" alt="">
+              </div>
+              <div class="col-1">
+                <ul>
+                  <li>
+                    <button (click)="selectedseat(1)" id=1 title="[A1]">
+                      <img src="../assets/img/bseat.png" alt="">
+                    </button>
+                  </li>
+                  <li>
+                    <button (click)="selectedseat(2)" id="2" title="[B1]">
+                      <img src="../assets/img/bseat.png" alt="">
+                    </button>
+                  </li>
+                  <li>
+                    <button (click)="selectedseat(3)" id="3">
+                      <img src="../assets/img/bseat.png" alt="">
+                    </button>
+                  </li>
+                  <li>
+                    <button (click)="selectedseat(4)" id="4">
+                      <img src="../assets/img/bseat.png" alt="">
+                    </button>
+                  </li>
+                  <li>
+                    <button (click)="selectedseat(5)" id="5">
+                      <img src="../assets/img/bseat.png" alt="">
+                    </button>
+                  </li>
+                  <li>
+                    <button (click)="selectedseat(6)" id="6">
+                      <img src="../assets/img/bseat.png" alt="">
+                    </button>
+                  </li>
+                  <li>
+                    <button (click)="selectedseat(7)" id="7">
+                      <img src="../assets/img/bseat.png" alt="">
+                    </button>
+                  </li>
+                  <li>
+                    <button (click)="selectedseat(8)" id="8">
+                      <img src="../assets/img/bseat.png" alt="">
+                    </button>
+                  </li>
+                  <li>
+                    <button (click)="selectedseat(9)" id="9">
+                      <img src="../assets/img/bseat.png" alt="">
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-2">
+                <ul>
+                    <li>
+                      <button (click)="selectedseat(10)" id=10 title="[A1]">
+                        <img src="../assets/img/bseat.png" alt="">
+                      </button>
+                    </li>
+                    <li>
+                      <button (click)="selectedseat(11)" id="11" title="[B1]">
+                        <img src="../assets/img/bseat.png" alt="">
+                      </button>
+                    </li>
+                    <li>
+                      <button (click)="selectedseat(12)" id="12">
+                        <img src="../assets/img/bseat.png" alt="">
+                      </button>
+                    </li>
+                    <li>
+                      <button (click)="selectedseat(13)" id="13">
+                        <img src="../assets/img/bseat.png" alt="">
+                      </button>
+                    </li>
+                    <li>
+                      <button (click)="selectedseat(14)" id="14">
+                        <img src="../assets/img/bseat.png" alt="">
+                      </button>
+                    </li>
+                    <li>
+                      <button (click)="selectedseat(15)" id="15">
+                        <img src="../assets/img/bseat.png" alt="">
+                      </button>
+                    </li>
+                    <li>
+                      <button (click)="selectedseat(16)" id="16">
+                        <img src="../assets/img/bseat.png" alt="">
+                      </button>
+                    </li>
+                    <li>
+                      <button (click)="selectedseat(17)" id="17">
+                        <img src="../assets/img/bseat.png" alt="">
+                      </button>
+                    </li>
+                    <li>
+                      <button (click)="selectedseat(18)" id="18">
+                        <img src="../assets/img/bseat.png" alt="">
+                      </button>
+                    </li>
+                  </ul>
+            </div>
+             
+            </div>
+          </div>
+          <div class="col-md-6 ">
+          <div class="seat_plan">
+            <table class="table ">
+              <thead>
+                <tr>
+                  <th>Seat NO</th>
+                  <th>BUS ID</th>
+                  <th>Passenger Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let s of showSeatList">
+                  <td>{{s.Seat_no}}</td>
+                  <td>{{s.Bus_ID}}</td>
+                  <td>{{s.passenger_name}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+            <div class="total  bg-default">
+              <b>Total: {{total}}</b>
+            </div>
+            <div class="row ">
+              <button routerLink="/payment" (click)="confirm()"class="btn mt-3 ml-3 btn-primary btn-sm btn-block ">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,88 @@
+#wrapper{
+    display: flex;
+  }
+#sidebar{
+    background-color:#DBE51A;
+    height: 100vh;
+    min-width: 218px;
+    background: linear-gradient(180deg,#DBE51A 30%#DBE51A 120%);
+    
+}
+#sidebar:hover{
+    color: beige;
+}
+body{
+    background-color: #E58A1A;
+    opacity: 100%;
+}
+.header{
+    text-align: center;
+}
+.divider{
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    width: 170px;
+    margin: 0 auto;
+}
+.userArea{
+    padding: 16px 0;
+    max-width: 160px;
+    margin: 0 auto;
+}
+.userName{
+    color: white;
+    font-size: 0.88em;
+    text-align: center;
+    margin-top: 12px;
+    font-weight: 600;
+    line-height: 1.3;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+ul.navigation{
+    list-style-type: none;
+    margin-top:22px;
+    padding: 0;
+}
+li:hover{
+    background-color: rgb(194, 193, 193);
+}
+a{
+    font-size: 1em;
+    padding:11px 24px;
+    color: white;
+    display: block;
+    border-left:3px solid transparent;
+    
+}
+a:hover{
+    color:black ;
+}
+a:active{
+    background-color: rgb(194, 193, 193) ;
+    color: black;
+}
+span{
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: opacity 0.2s, visibility 0.2s;
+    transition: opacity 0.2s, visibility 0.2s;
+    -ms-transition: opacity 0.2s, visibility 0.2s;
+}
+
+i{
+    margin-right: 12px;
+
+}
+.tooltip{
+    margin: 2px;
+  }
+  .tooltip-inner {
+      background-color: rgba(0,32,74,0.8);
+  }
+  .tooltip.bs-tooltip-auto[x-placement^=right] .arrow::before, 
+  .tooltip.bs-tooltip-right .arrow::before 
+  { border-right-color: rgba(0,32,74,0.8);}
+

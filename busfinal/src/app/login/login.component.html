@@ -1,0 +1,34 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> 
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <div class="fadeIn first">
+      <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/openmoji/272/bus_1f68c.png" id="icon" alt="User Icon"/>
+    </div>
+
+    <!-- Login Form -->
+    <form >
+      <input type="text" [(ngModel)]="userLogin.username" id="login" 
+      class="fadeIn second" name="login" placeholder="login" required minlength="4" #Uname="ngModel">
+      <input type="password" [(ngModel)]="userLogin.password" id="password" class="fadeIn third" name="password" placeholder="password">
+      <input type="submit"  (click)="onLogin()" class="fadeIn fourth" value="Log In">
+      <!-- routerLink="Dashboard" -->
+        <div *ngIf="user" routerLink="Dashboard"> 
+            Welcome <mark>{{userLogin.username}}</mark>
+        </div>
+        <div *ngIf="msg">
+            {{msg}}
+        </div>
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#" routerLink="Signup">Sign up</a>
+    </div>
+
+  </div>
+</div>

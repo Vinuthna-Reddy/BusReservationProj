@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+
+<div class="container">
+  <div class="row justify-content-center" id="printtable">
+    <div class="col-md-10 ticket ">
+        <h6 class="text-center pt-3 pb-3 "> Online Reservation      </h6>
+        <table class="table ">
+   <thead>
+    <td class="text-capitalize">{{busdetails.pickup_place}}<span> <i class="fas fa- arrow-right"></i></span> {{busdetails.drop_place}} </td>
+    <td>Wednesday Jan 14 , 2021</td>
+    <td>HanumanTravels.com</td>
+   </thead>  
+        </table>
+        <table class="table ps_details">
+          <tr>
+            <th>User ID</th>
+            <th>BUS ID</th>
+            <th>Seat No</th>
+            <th>Total Fare</th>
+            
+          </tr>
+          <tr>
+            <td><b>{{user}}</b></td>
+            <td>{{busdetails.Bus_ID}}</td>
+            <td >{{seatno}}</td>
+            <td>{{total}}</td>
+          </tr>
+        </table>
+        <table class="table ps_details ">
+          <tr>
+            <th>Bus Type</th>
+            <th>Reporting Time </th>
+            <th>Departure Time</th>
+            
+          </tr>
+          <tr>
+            <td>{{busdetails.Bus_Type}}</td>
+            <td>Before 30 mints</td>
+            <td>{{busdetails.dept_time}}</td>
+          </tr>
+        </table>
+    </div>
+    <div class="row">
+      <p style="color:red">** Please Bring this copy to ticket counter for collect your ticket </p>
+    </div>
+  </div>
+</div>
+
+<button (click)="download()">download</button>
+<button (click)="logout()" routerLink="">Logout</button>
+<button routerLink="/Dashboard">Home</button>

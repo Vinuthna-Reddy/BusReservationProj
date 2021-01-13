@@ -1,0 +1,53 @@
+<div class="total">
+<!-- <div id="wrapper">
+    <div id="first">first</div>
+    <div id="second">second</div>
+    <div id="third">third</div>
+  </div> -->
+<select #pickup_places (change)="GetBuses(pickup_places,drop_places,Departure_Times)">
+    <option *ngFor="let item of data" [value]="item.pickup_place"><td>{{item.pickup_place}}</td></option>
+</select>
+<br>
+<select #drop_places (change)=" GetBuses(pickup_places,drop_places,Departure_Times)">
+    <option *ngFor="let item of data" [value]="item.drop_place"><td>{{item.drop_place}}</td></option>
+</select>
+<br>
+<select #Departure_Times (change)=" GetBuses(pickup_places,drop_places,Departure_Times)">
+    <option  *ngFor="let item of data" [value]="item.Departure_Time"><td>{{ item.Departure_Time | date }}</td></option>
+</select>
+<br>
+<div>
+    <div *ngFor="let item of buses">
+        <table border="3px" cellpadding="2px">
+
+            <tr>
+                <th>Bus_ID</th>
+                <th>Travel_ID</th>
+                <th>Bus_Type</th>
+                <th>Cost_Per_Seat</th>
+                <th>NO_of_Seats</th>
+                <th>pickup_place</th>
+                <th>drop_place</th>
+                <th>dept_time</th>
+                <th>arrival_time</th>
+                <th></th>
+            </tr>
+            <tbody>
+                <tr>
+                    <td>{{item.Bus_ID}}</td>
+                    <td>{{item.Travel_ID}}</td>
+                    <td>{{item.Bus_Type}}</td>
+                    <td>{{item.Cost_Per_Seat}}</td>
+                    <td>{{item.NO_of_Seats}}</td>
+                    <td>{{item.pickup_place}}</td>
+                    <td>{{item.drop_place}}</td>
+                    <td>{{item.dept_time}}</td>
+                    <td>{{item.arrival_time}}</td>
+                    <td><button (click)="busseat(item)" routerLink="/seats">Book Seats</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+</div>

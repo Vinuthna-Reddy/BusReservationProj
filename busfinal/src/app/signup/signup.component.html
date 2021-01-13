@@ -1,0 +1,88 @@
+<p>signup works!</p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/openmoji/272/bus_1f68c.png" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+     <form>
+        <input type="text" [(ngModel)]="user.fname" id="login" class="fadeIn first" name="login" placeholder="first name">
+        <input type="text" [(ngModel)]="user.lname" id="login" class="fadeIn first" name="login" placeholder="last name">
+        <input type="text" [(ngModel)]="user.username" id="login" class="fadeIn second" name="login" placeholder="username">
+        <input type="password" [(ngModel)]="user.password" id="login" class="fadeIn second" name="login" placeholder="password">
+        <input type="text" [(ngModel)]="user.phone_no" id="login" class="fadeIn third" name="login" placeholder="phone number">
+         <input type="email" [(ngModel)]="user.email_id" id="login" class="fadeIn third" name="login" placeholder="email id"> 
+        <input type="submit" class="fadeIn fourth" value="Register" (click)="InsertUser()" routerLink="">
+    </form> 
+    <!--<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+          <input type="text" [(ngModel)]="user.fname" id="login" class="fadeIn first" name="login" placeholder="First Name"
+           formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+          <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+              <div *ngIf="f.firstName.errors.required">First Name is required</div>
+          </div>
+      </div>
+      <div class="form-group">
+          <input type="text" [(ngModel)]="user.lname" id="login" class="fadeIn first" name="login" placeholder="Last Name"
+          formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+          <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+              <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+          </div>
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="user.email_id" id="login" class="fadeIn third" name="login" placeholder="Email Id"
+         formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        </div>
+    </div>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="user.phone_no" id="login" class="fadeIn third" name="login" placeholder="Phone Number"
+      formControlName="phno" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phno.errors }" />
+      <div *ngIf="submitted && f.phno.errors" class="invalid-feedback">
+          <div *ngIf="f.phno.errors.required">Phone No. is required</div>
+          <div *ngIf="f.phno.errors.minLength">Phone No. is too short</div>
+          <div *ngIf="f.phno.errors.min">Enter Valid Phone No.></div>
+          <div *ngIf="f.phno.errors.max">Enter Valid Phone No.></div>
+      </div>
+  </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="user.username" id="login" class="fadeIn second" name="login" placeholder="Username"
+        formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">Username is required</div>
+        </div>
+    </div>
+      <div class="form-group">
+          <input type="password" [(ngModel)]="user.password" id="login" class="fadeIn second" name="login" placeholder="Password"
+           formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+          </div>
+      </div>
+      <div class="form-group">
+          <input type="password" id="login" class="fadeIn second" name="login" placeholder=" Confirm Password"
+           formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+          <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+              <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+              <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+          </div>
+      </div>
+      <div class="form-group">
+          <button class="fadeIn fourth" routerLink="" class="btn btn-primary">Register</button>
+          <!-- <input type="submit" class="fadeIn fourth" value="Register" (click)="InsertUser()" routerLink=""> 
+      </div>
+  </form>-->
+  </div>
+</div>

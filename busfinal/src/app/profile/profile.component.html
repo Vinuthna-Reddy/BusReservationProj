@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.css" integrity="sha256-1dcYWPAIBzLgOJlRNpMFWi1aIEWZU490to6kkbDmFM8="
+	 crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+
+  </head>
+  <body>
+    <div id="wrapper">
+      <nav id="sidebar">
+        <div class="header">
+          <a href="index.html">
+            <div class="fadeIn first">
+              <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/openmoji/272/bus_1f68c.png" id="icon" alt="User Icon" />
+            </div>
+          </a>
+        </div>
+        <span class="divider"></span>
+        <div class="userArea">
+          <div class="userName">
+            <!-- {{user.fname}} 
+            {{temp}}-->
+          </div>
+        </div>
+        <span class="divider"></span>
+        <ul class="navigation">
+          <li>
+            <a routerLink="/Dashboard" tooltip="Dashboard"><span>Dashboard</span></a>
+          </li>
+          <li>
+            <a routerLink="/Bookings" tooltip="Bookings"><span>Bookings</span></a>
+          </li>
+          <li>
+            <a routerLink="/Profile" tooltip="User Profile" class="active"><span>User Profile</span></a>
+          </li>
+          <li>
+            <a routerLink="/ChangePassword" tooltip="Change Password"><span>Change Password</span></a>
+          </li>
+        </ul>
+      </nav>
+      <div id="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+                <div *ngIf="show;">
+                    First Name:{{user.fname}}
+                    <br>
+                    Last Name:{{user.lname}}
+                    <br>
+                    UserName:{{user.username}}
+                    <br>
+                    Phone Number:{{user.phone_no}}
+                    <br> 
+                    Email Id:{{user.email_id}}
+                    <br>
+                    Wallet Amount:{{user.wallet}}
+                    <br>
+                    <button (click)="show=!show">Update Profile</button>
+                </div>
+                <!-- <select #custid (change)="findCustomer(custid)">
+                    <option *ngFor="let cust of customers" [value]="cust.id">{{cust.id}}</option>
+                </select> -->
+                <div  *ngIf="!show;">
+                    <label>First Name</label>
+                    <input type="text" [(ngModel)]="user.fname">
+                    <br>
+                    <label>Last Name</label>
+                    <input type="text" [(ngModel)]="user.lname">
+                    <br>
+                    <label>Phone Number</label>
+                    <input type="text" [(ngModel)]="user.phone_no">
+                    <br>
+                    <label>UserName</label>
+                    <input type="text" [(ngModel)]="user.username">
+                    <br>
+                    <label>Email-id</label>
+                    <input type="text" [(ngModel)]="user.email_id">
+                    <br>
+                    <button routerLink="/Dashboard" (click)="updateCustomerData()">Update Details</button>
+                    
+                </div>
+              <!-- <router-outlet>
+                <app-search-buses></app-search-buses>
+              </router-outlet> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+  </body>
+</html>

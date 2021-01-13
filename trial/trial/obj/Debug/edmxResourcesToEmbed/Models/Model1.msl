@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Bus_ProjectModelStoreContainer" CdmEntityContainer="Bus_ProjectEntities">
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="Bus_ProjectModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="Bus_ProjectModel.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="Guest_Id" ColumnName="Guest_Id" />
+          <ScalarProperty Name="Travel_Id" ColumnName="Travel_Id" />
+          <ScalarProperty Name="coach_bus_id" ColumnName="coach_bus_id" />
+          <ScalarProperty Name="booking_status" ColumnName="booking_status" />
+          <ScalarProperty Name="bus_id" ColumnName="bus_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bus_Details">
+      <EntityTypeMapping TypeName="Bus_ProjectModel.Bus_Details">
+        <MappingFragment StoreEntitySet="Bus_Details">
+          <ScalarProperty Name="Bus_ID" ColumnName="Bus_ID" />
+          <ScalarProperty Name="Bus_Type" ColumnName="Bus_Type" />
+          <ScalarProperty Name="Cost_Per_Seat" ColumnName="Cost_Per_Seat" />
+          <ScalarProperty Name="NO_of_Seats" ColumnName="NO_of_Seats" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Coach_bus">
+      <EntityTypeMapping TypeName="Bus_ProjectModel.Coach_bus">
+        <MappingFragment StoreEntitySet="Coach_bus">
+          <ScalarProperty Name="coach_bus_id" ColumnName="coach_bus_id" />
+          <ScalarProperty Name="Bus_type" ColumnName="Bus_type" />
+          <ScalarProperty Name="No_of_seats" ColumnName="No_of_seats" />
+          <ScalarProperty Name="cost_per_day" ColumnName="cost_per_day" />
+          <ScalarProperty Name="driver_name" ColumnName="driver_name" />
+          <ScalarProperty Name="driver_license_id" ColumnName="driver_license_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Guests">
+      <EntityTypeMapping TypeName="Bus_ProjectModel.Guest">
+        <MappingFragment StoreEntitySet="Guest">
+          <ScalarProperty Name="Guest_ID" ColumnName="Guest_ID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email_id" ColumnName="email_id" />
+          <ScalarProperty Name="phone_no" ColumnName="phone_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="payments">
+      <EntityTypeMapping TypeName="Bus_ProjectModel.payment">
+        <MappingFragment StoreEntitySet="payment">
+          <ScalarProperty Name="transaction_id" ColumnName="transaction_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="guest_id" ColumnName="guest_id" />
+          <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+          <ScalarProperty Name="payment_status" ColumnName="payment_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Registered_User">
+      <EntityTypeMapping TypeName="Bus_ProjectModel.Registered_User">
+        <MappingFragment StoreEntitySet="Registered_User">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="phone_no" ColumnName="phone_no" />
+          <ScalarProperty Name="wallet" ColumnName="wallet" />
+          <ScalarProperty Name="email_id" ColumnName="email_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seats">
+      <EntityTypeMapping TypeName="Bus_ProjectModel.Seat">
+        <MappingFragment StoreEntitySet="Seats">
+          <ScalarProperty Name="Seat_no" ColumnName="Seat_no" />
+          <ScalarProperty Name="Bus_ID" ColumnName="Bus_ID" />
+          <ScalarProperty Name="seat_status" ColumnName="seat_status" />
+          <ScalarProperty Name="passenger_name" ColumnName="passenger_name" />
+          <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Travels">
+      <EntityTypeMapping TypeName="Bus_ProjectModel.Travel">
+        <MappingFragment StoreEntitySet="Travel">
+          <ScalarProperty Name="Travel_ID" ColumnName="Travel_ID" />
+          <ScalarProperty Name="pickup_place" ColumnName="pickup_place" />
+          <ScalarProperty Name="drop_place" ColumnName="drop_place" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure_Time" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival_Time" />
+          <ScalarProperty Name="Bus_ID" ColumnName="Bus_ID" />
+          <ScalarProperty Name="no_of_days" ColumnName="no_of_days" />
+          <ScalarProperty Name="coach_bus_id" ColumnName="coach_bus_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getallbusdetails" FunctionName="Bus_ProjectModel.Store.getallbusdetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Bus_ProjectModel.getallbusdetails_Result">
+          <ScalarProperty Name="Bus_ID" ColumnName="Bus_ID" />
+          <ScalarProperty Name="Travel_ID" ColumnName="Travel_ID" />
+          <ScalarProperty Name="Bus_Type" ColumnName="Bus_Type" />
+          <ScalarProperty Name="Cost_Per_Seat" ColumnName="Cost_Per_Seat" />
+          <ScalarProperty Name="NO_of_Seats" ColumnName="NO_of_Seats" />
+          <ScalarProperty Name="pickup_place" ColumnName="pickup_place" />
+          <ScalarProperty Name="drop_place" ColumnName="drop_place" />
+          <ScalarProperty Name="dept_time" ColumnName="dept_time" />
+          <ScalarProperty Name="arrival_time" ColumnName="arrival_time" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getpastbookings" FunctionName="Bus_ProjectModel.Store.getpastbookings">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Bus_ProjectModel.getpastbookings_Result">
+          <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+          <ScalarProperty Name="pickup_place" ColumnName="pickup_place" />
+          <ScalarProperty Name="drop_place" ColumnName="drop_place" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_BookedSeats" FunctionName="Bus_ProjectModel.Store.sp_BookedSeats" />
+    <FunctionImportMapping FunctionImportName="sp_LoginCheck1" FunctionName="Bus_ProjectModel.Store.sp_LoginCheck1" />
+    <FunctionImportMapping FunctionImportName="sp_pendingBook" FunctionName="Bus_ProjectModel.Store.sp_pendingBook" />
+  </EntityContainerMapping>
+</Mapping>
